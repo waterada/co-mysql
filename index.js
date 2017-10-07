@@ -1,6 +1,5 @@
 'use strict';
 
-const config = require('config');
 const mysql = require('mysql');
 const co = require('co');
 
@@ -229,6 +228,4 @@ class Stacktrace extends Error {
     }
 }
 
-let db = new CoMySQL(config);
-db._CoMySQL = CoMySQL; //for test
-module.exports = db;
+module.exports = CoMySQL;
