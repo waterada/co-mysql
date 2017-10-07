@@ -1,4 +1,4 @@
-const CoMySQL = require('../lib/co-mysql')._CoMySQL;
+const CoMySQL = require('../index')._CoMySQL;
 const coMocha = require('./lib/co-mocha');
 const assert = require('chai').assert;
 const config = require('config');

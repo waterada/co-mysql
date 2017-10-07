@@ -1,6 +1,8 @@
 CoMySQL
 =========
 [![Build Status](https://travis-ci.org/waterada/co-mysql.svg?branch=master)](https://travis-ci.org/waterada/co-mysql)
+[![Dependency Status](https://gemnasium.com/badges/github.com/waterada/co-mysql.svg)](https://gemnasium.com/github.com/waterada/co-mysql)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 
 概要
@@ -52,9 +54,43 @@ yield coMySQL.getMasterConnection(function * (conn) {
         assert.equal(user['user_name'], 'ccc');
     }
 });
+
+//Slaveで繋ぐなら
+yield coMySQL.getSlaveConnection(function * (conn) {
+    //ここでSQL
+});
+
+//トランザクションを使うなら
+yield coMySQL.beginTransaction(function * (conn) {
+    //ここでSQL
+    if (isError) { //何か問題があれば
+        conn.rollback();
+    }
+    //何もなければ自動的に commit される
+});
 ```
 
-ようするに、[`co`](https://www.npmjs.com/package/co) を使うことでコールバック地獄にすることなく、Promise よりもシンプルに SQL を書けるようにするのに加えて、MASTER/SLAVE の Pooling とコネクションの取得・リリース処理を簡単に書けるようにし（実質 `getMasterConnection()` で囲むだけ）、`co` の最大のデメリットであるエラー時の stacktrace から SQL の呼び出し元を辿れない問題を解決しました。
+- [`co`](https://www.npmjs.com/package/co) を使ってコールバック地獄にすることなく、Promise よりもシンプルに SQL を書ける。
+- MASTER/SLAVE の Pooling とコネクションの取得・リリース処理はほぼ自動化され簡単に書ける（実質 `getMasterConnection()` で囲むだけ）。
+- [`co`](https://www.npmjs.com/package/co) だと SQL エラーの stacktrace から SQL の呼び出し元を辿れないが、これは辿れる。
+
+
+
+依存
+-----
+
+- `node 6.x` 以上
+- `mysql`
+- `co`
+
+
+インストール
+-------------
+
+```sh
+npm install --save @waterada/co-mysql
+```
+
 
 テスト実行方法
 --------------

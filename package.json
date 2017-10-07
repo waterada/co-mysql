@@ -1,7 +1,11 @@
 {
-  "name": "co-mysql",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@waterada/co-mysql",
+  "version": "1.0.0",
+  "description": "Easy to use the node-mysql with the co.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
     "co": "^4.6.0",
     "config": "^1.25.1",
@@ -16,5 +20,19 @@
   },
   "engines": {
     "node": "6.x"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waterada/co-mysql.git"
+  },
+  "keywords": [
+    "co",
+    "mysql"
+  ],
+  "author": "waterada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/waterada/co-mysql/issues"
+  },
+  "homepage": "https://github.com/waterada/co-mysql#readme"
 }
