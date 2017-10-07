@@ -91,9 +91,65 @@ yield coMySQL.beginTransaction(function * (conn) {
 npm install --save @waterada/co-mysql
 ```
 
+実装
+---------
+
+```js
+//接続
+const CoMySQL = require('@waterada/co-mysql');
+const coMySQL = new CoMySQL({
+  "COMMON": {
+    "connectTimeout": 1000,
+    "supportBigNumbers": true,
+    "connectionLimit": 1,
+    "removeNodeErrorCount": 3,
+    "host": "mysql",
+    "port": "3306"
+  },
+  "MASTER": {
+    "user": "co_mysql_test",
+    "password": "co_mysql_test",
+    "database": "co_mysql_test"
+  },
+  "SLAVES": [
+    {
+      "user": "co_mysql_test",
+      "password": "co_mysql_test",
+      "database": "co_mysql_test"
+    },
+    {
+      "user": "co_mysql_test",
+      "password": "co_mysql_test",
+      "database": "co_mysql_test"
+    }
+  ]
+});
+
+//コネクション取得
+yield coMySQL.getMasterConnection(function * (conn) {
+    //SQL実行
+});
+
+//終了
+coMySQL.end();
+```
+
+詳細な使い方
+------------
+
+[テスト](test/test-co-mysql.js) を参考にしてください。
+
 
 テスト実行方法
 --------------
+
+ローカルで動かす場合:
+
+```sh
+npm test
+```
+
+docker で動かす場合:
 
 ```sh
 docker-compose run --rm node npm test
