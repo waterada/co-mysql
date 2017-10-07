@@ -1,6 +1,6 @@
 {
   "name": "@waterada/co-mysql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy to use the node-mysql with the co.",
   "main": "index.js",
   "directories": {
