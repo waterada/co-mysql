@@ -1,0 +1,29 @@
+{
+  "MYSQL": {
+    "COMMON": {
+      "connectTimeout": 1000,
+      "supportBigNumbers": true,
+      "connectionLimit": 1,
+      "removeNodeErrorCount": 3,
+      "host": "localhost",
+      "port": "3306"
+    },
+    "MASTER": {
+      "user": "travis",
+      "password": "",
+      "database": "co_mysql_test"
+    },
+    "SLAVES": [
+      {
+        "user": "travis",
+        "password": "",
+        "database": "co_mysql_test"
+      },
+      {
+        "user": "travis",
+        "password": "",
+        "database": "co_mysql_test"
+      }
+    ]
+  }
+}
