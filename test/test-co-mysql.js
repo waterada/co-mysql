@@ -175,7 +175,7 @@ describe('CoMySQL', function () {
                     assert.equal(user['user_name'], 'zzz', '更新されている');
                     //Rollback
                     conn.rollback();
-                    assert.fail('ここは通らない');
+                    throw 'ここは通らない';
                 });
                 yield coMySQL.getMasterConnection(function * (conn) {
                     //確認
@@ -346,7 +346,7 @@ describe('CoMySQL', function () {
             (yield coMocha.catchThrown(function * () {
                 //コネクション取得
                 yield coMySQL.getMasterConnection(function * () {
-                    assert.fail('ここは実行されない');
+                    throw 'ここは実行されない';
                 });
             })).assertThrows('コネクション取得で強制的にエラー').assertExistsInStack(__filename, { line: -3 });
         }));
@@ -364,7 +364,7 @@ describe('CoMySQL', function () {
             (yield coMocha.catchThrown(function * () {
                 //トランザクション開始
                 yield coMySQL.beginTransaction(function * () {
-                    assert.fail('ここは実行されない');
+                    throw 'ここは実行されない';
                 });
             })).assertThrows('beginTransactionで強制的にエラー').assertExistsInStack(__filename, { line: -3 });
             new ConnCount(coMySQL, /^MASTER/).assertUsed(0, 'コネクションは使われていない');
