@@ -11,6 +11,7 @@
     "mysql": "^2.13.0"
   },
   "devDependencies": {
+    "@waterada/co-mocha": "^1.0.0",
     "chai": "^4.1.2",
     "config": "^1.26.2",
     "mocha": "^4.0.0"

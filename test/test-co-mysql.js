@@ -1,5 +1,5 @@
 const CoMySQL = require('..');
-const coMocha = require('./lib/co-mocha');
+const coMocha = require('@waterada/co-mocha');
 const assert = require('chai').assert;
 const config = require('config');
 
