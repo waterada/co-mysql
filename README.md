@@ -79,7 +79,7 @@ yield coMySQL.beginTransaction(function * (conn) {
 依存
 -----
 
-- `node 6.x` 以上
+- `node 6` 以上
 - `mysql`
 - `co`
 
